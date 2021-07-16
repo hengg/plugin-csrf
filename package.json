@@ -1,6 +1,6 @@
 {
   "name": "@umajs/plugin-csrf",
-  "version": "0.1.2",
+  "version": "0.1.4",
   "description": "Umajs CSRF plugin",
   "author": "hengg",
   "main": "lib/index.js",

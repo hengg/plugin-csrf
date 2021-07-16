@@ -92,6 +92,8 @@ export default (uma: Uma, opts: Options = {}): Koa.Middleware => {
                     break;
             }
 
+            console.log({transType,token,tokenKey,secret,cookies:ctx.cookies.get('i18n')})
+
             if (!token || !secret) {
                 ctx.throw(403, 'CSRF Token Not Found!');
             }
@@ -118,14 +120,18 @@ export default (uma: Uma, opts: Options = {}): Koa.Middleware => {
         // token 存储在 header，同时挂载在ctx上
         ctx[ctxTokenKey] = newToken;
         ctx.append(tokenKey, newToken);
-        // ctx.append('Access-Control-Expose-Headers', tokenKey);
+        ctx.append('Access-Control-Expose-Headers', tokenKey);
         
         // secretKey 存储在cookie
         ctx.cookies.set(secretKey, newSecret, {
-            maxAge: maxAge,
+            maxAge,
             httpOnly: true,
         });
 
+        ctx.cookies.set(tokenKey, newToken, {
+            maxAge,
+            httpOnly: false,
+        });
         await next();
     };
 };

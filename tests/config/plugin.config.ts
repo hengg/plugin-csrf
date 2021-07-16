@@ -3,11 +3,11 @@ export default {
     'csrf': {
         enable: true,
         options: {
-            // excluded: ['GET', 'HEAD', 'OPTIONS'],
-            // tokenKey: 'csrf_token',
+            excluded: ['GET','HEAD', 'OPTIONS'],
+            tokenKey: 'csrf_token',
             // secretKey: 'csrf_token_key',
             // ctxTokenKey: 'csrfToken',
-            withUid: true,
+            withUid: false,
             transType:TransType.header,
         },
     },
