@@ -118,7 +118,7 @@ export default (uma: Uma, opts: Options = {}): Koa.Middleware => {
         // token 存储在 header，同时挂载在ctx上
         ctx[ctxTokenKey] = newToken;
         ctx.append(tokenKey, newToken);
-        ctx.append('Access-Control-Expose-Headers', tokenKey);
+        // ctx.append('Access-Control-Expose-Headers', tokenKey);
         
         // secretKey 存储在cookie
         ctx.cookies.set(secretKey, newSecret, {
