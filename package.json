@@ -1,6 +1,6 @@
 {
   "name": "@umajs/plugin-csrf",
-  "version": "0.1.4",
+  "version": "1.0.0-alpha.0",
   "description": "Umajs CSRF plugin",
   "author": "hengg",
   "main": "lib/index.js",
@@ -18,8 +18,8 @@
     "url": "https://github.com/Umajs/plugin-csrf.git"
   },
   "scripts": {
-    "build": "tsc",
-    "prepublish": "npm run build",
+    "build": "tsc & uglifyjs lib/index.js -o lib/index.js -c -m",
+    "prepublish": "tsc & uglifyjs lib/index.js -o lib/index.js -c -m",
     "app": "ts-node-dev tests/app.ts"
   },
   "dependencies": {
@@ -36,7 +36,8 @@
     "shelljs": "^0.8.3",
     "ts-node": "^8.8.1",
     "ts-node-dev": "^1.0.0-pre.44",
-    "typescript": "^3.8.3"
+    "typescript": "^3.8.3",
+    "uglify-js": "^3.13.10"
   },
   "config": {
     "commitizen": {

@@ -128,10 +128,6 @@ export default (uma: Uma, opts: Options = {}): Koa.Middleware => {
             httpOnly: true,
         });
 
-        ctx.cookies.set(tokenKey, newToken, {
-            maxAge,
-            httpOnly: false,
-        });
         await next();
     };
 };
